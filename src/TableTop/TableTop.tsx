@@ -9,7 +9,7 @@ import useTableTop from "./useTableTop";
 const TableTop: FC = () => {
   const theme = useTheme() as GlobalTheme;
   const styles = tableTopStyles(theme);
-  const { tableTopSquares } = useTableTop(theme);
+  const { tableTopSquares } = useTableTop();
 
   return (
     <div className={css(styles.container)}>

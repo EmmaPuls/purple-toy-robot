@@ -1,35 +1,44 @@
 import { GRID_SIZE } from "config";
-import { GlobalTheme } from "../theme";
-import { TableTopSquareState } from "./types";
+import { useState } from "react";
+import { TableCellColor, TableTopSquareState } from "./types";
 
 type TableTopHookResult = {
-    tableTopSquares: TableTopSquareState[];
-}
+  tableTopSquares: TableTopSquareState[];
+};
+const getRow = (i: number): number => Math.floor(i / GRID_SIZE);
+const getColumn = (i: number): number => i % GRID_SIZE;
+export const _isEvenRow = (i: number): boolean => getRow(i) % 2 === 0;
+export const _isEvenColumn = (i: number): boolean => getColumn(i) % 2 === 0;
+const alternateColors = (i: number): TableCellColor =>
+  _isEvenColumn(i)
+    ? _isEvenRow(i)
+      ? TableCellColor.color1
+      : TableCellColor.color2
+    : !_isEvenRow(i)
+    ? TableCellColor.color1
+    : TableCellColor.color2;
 
-export const _isEvenRow = (index: number): boolean => Math.floor(index/6)%2 === 0;
-export const _isEvenColumn = (index: number): boolean => index%2 === 0;
-const _alternateColors = (index: number, tableCellColors: string[]): string => _isEvenColumn(index) ? _isEvenRow(index) ? tableCellColors[0] : tableCellColors[1] : !_isEvenRow(index) ? tableCellColors[0] : tableCellColors[1]
-
-const initialTableTopSquares = (theme: GlobalTheme): TableTopSquareState[] => {
-    const tableCellColors = [theme.colors.boardDark, theme.colors.boardLight];
-    const tableTopSquares = [] as TableTopSquareState[];
-    for(let i = 0; i < GRID_SIZE*GRID_SIZE; i++) {
-        const tableTopSquare: TableTopSquareState = {
-            color: _alternateColors(i, tableCellColors),
-            row: Math.floor(i/GRID_SIZE),
-            column: i%GRID_SIZE,
-        };
-        tableTopSquares.push(tableTopSquare);
-    }
-    return tableTopSquares;
+const initTableTopSquares = (): TableTopSquareState[] => {
+  const tableTopSquares = [] as TableTopSquareState[];
+  for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+    const tableTopSquare: TableTopSquareState = {
+      color: alternateColors(i),
+      row: getRow(i),
+      column: getColumn(i),
+    };
+    tableTopSquares.push(tableTopSquare);
+  }
+  return tableTopSquares;
 };
 
-const useTableTop = (theme: GlobalTheme): TableTopHookResult => {
-    const tableTopSquares = initialTableTopSquares(theme);
-    
-    return {
-        tableTopSquares,
-    };
-}
+const useTableTop = (): TableTopHookResult => {
+  const [tableTopSquares, setTableTopSquares] = useState<TableTopSquareState[]>(
+    initTableTopSquares()
+  );
+
+  return {
+    tableTopSquares,
+  };
+};
 
 export default useTableTop;
