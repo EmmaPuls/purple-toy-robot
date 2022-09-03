@@ -1,5 +1,5 @@
 import { CSSObject } from "@emotion/css";
-import { GlobalTheme } from "./theme";
+import { GlobalTheme } from "theme";
 
 type AppStyles = {
     app: CSSObject;

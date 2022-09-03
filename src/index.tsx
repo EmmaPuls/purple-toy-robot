@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
 import { injectGlobal } from "@emotion/css";
-import App from "App";
 import globalTheme from "theme";
 import reportWebVitals from "reportWebVitals";
+import App from "App";
+import RootErrorBoundary from "ErrorBoundaries/RootErrorBoundary";
 
 injectGlobal`
 body {
@@ -27,9 +28,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={globalTheme}>
-      <App />
-    </ThemeProvider>
+    <RootErrorBoundary>
+      <ThemeProvider theme={globalTheme}>
+        <RootErrorBoundary themeLoaded>
+          <App />
+        </RootErrorBoundary>
+      </ThemeProvider>
+    </RootErrorBoundary>
   </React.StrictMode>
 );
 reportWebVitals();
