@@ -8,8 +8,8 @@ type TableTopHookResult = {
     React.SetStateAction<TableTopSquareState[]>
   >;
 };
-const getRow = (i: number): number => Math.floor(i / GRID_SIZE);
-const getColumn = (i: number): number => i % GRID_SIZE;
+const getRow = (i: number): number => i % GRID_SIZE;
+const getColumn = (i: number): number => Math.floor(i / GRID_SIZE);
 export const _isEvenRow = (i: number): boolean => getRow(i) % 2 === 0;
 export const _isEvenColumn = (i: number): boolean => getColumn(i) % 2 === 0;
 const alternateColors = (i: number): TableCellColor =>
