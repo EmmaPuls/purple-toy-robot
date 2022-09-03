@@ -17,7 +17,7 @@ const TableTop: FC = () => {
       {tableTopSquares.map((tableTopSquare, index) => {
         return (
           <TableTopSquare
-            color={tableTopSquare.color}
+            state={tableTopSquare}
             key={`Square-${index}`}
             number={index}
           />
