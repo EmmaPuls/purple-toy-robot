@@ -16,6 +16,9 @@ const TableTopSquare: FC<TableTopSquareProps> = ({ state, number }) => {
 
   return (
     <div className={css(styles.square)} data-testid={`Square-${number}`}>
+      <div className={css(styles.overlayContainer)}>
+        <p className={css(styles.overlayText)}>{`${state.row}, ${state.column}`}</p>
+      </div>
     </div>
   );
 };

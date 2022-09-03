@@ -1,4 +1,5 @@
 import { CSSObject } from "@emotion/css";
+import { GRID_SIZE } from "config";
 import { GlobalTheme } from "theme";
 
 type TableTopStyles = {
@@ -6,30 +7,33 @@ type TableTopStyles = {
   tableTop: CSSObject;
 };
 
+const stringOfColOrRowSizes = new Array(GRID_SIZE).fill('1fr').join(' ');
+
 const tableTopStyles = (theme: GlobalTheme): TableTopStyles => ({
   container: {
+    alignItems: "center",
+    backgroundColor: theme.colors.playArea,
+    borderRadius: "10px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "80vw",
     height: "80vh",
+    justifyContent: "center",
     padding: "20px",
-    borderRadius: "10px",
-    backgroundColor: theme.colors.playArea,
+    width: "80vw"
   },
   tableTop: {
-    position: 'relative',
     border: '10px',
     borderColor: theme.colors.boardDark,
+    borderRadius: "10px",
     borderStyle: 'solid',
-    padding: '10px',
     display: "grid",
     gap: "10px",
-    width: '75vmin',
+    gridAutoFlow: "row",
+    gridTemplate: `${stringOfColOrRowSizes} / ${stringOfColOrRowSizes}`,
     height: '75vmin',
-    borderRadius: "10px",
-    gridTemplate: "1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr 1fr",
+    padding: '10px',
+    position: 'relative',
+    width: '75vmin'
   },
 });
 
