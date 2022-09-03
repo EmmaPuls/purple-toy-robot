@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RootErrorBoundary should render error boundary with theme if requested 1`] = `
+<body>
+  <div>
+    <div
+      class="css-1fovf95"
+    >
+      <div
+        class="css-1ay46ss"
+      >
+        <h1
+          class="css-1kxrhf3"
+        >
+          Oh no!
+Something went wrong
+        </h1>
+        <p
+          class="css-1x1uhd2"
+        >
+          Reload the page to continue
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`RootErrorBoundary should render error boundary without theme by default 1`] = `
+<body>
+  <div>
+    <h1
+      class="css-1u8eb7y"
+    >
+      Oh no!
+Something went wrong
+    </h1>
+    <p
+      class="css-1tyyxc3"
+    >
+      Reload the page to continue
+    </p>
+  </div>
+</body>
+`;
+
+exports[`RootErrorBoundary should render error boundary without theme if error in theme 1`] = `
+<body>
+  <div>
+    <h1
+      class="css-1u8eb7y"
+    >
+      Oh no!
+Something went wrong
+    </h1>
+    <p
+      class="css-1tyyxc3"
+    >
+      Reload the page to continue
+    </p>
+  </div>
+</body>
+`;

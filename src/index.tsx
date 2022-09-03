@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
 import { injectGlobal } from "@emotion/css";
 import globalTheme from "theme";
-import reportWebVitals from "reportWebVitals";
 import App from "App";
 import RootErrorBoundary from "ErrorBoundaries/RootErrorBoundary";
 
@@ -37,4 +36,3 @@ root.render(
     </RootErrorBoundary>
   </React.StrictMode>
 );
-reportWebVitals();
