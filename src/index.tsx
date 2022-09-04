@@ -4,7 +4,7 @@ import { ThemeProvider } from "@emotion/react";
 import { injectGlobal } from "@emotion/css";
 import globalTheme from "theme";
 import App from "App";
-import RootErrorBoundary from "ErrorBoundaries/RootErrorBoundary";
+import RootErrorBoundary from "features/ErrorBoundaries/RootErrorBoundary";
 
 injectGlobal`
 body {

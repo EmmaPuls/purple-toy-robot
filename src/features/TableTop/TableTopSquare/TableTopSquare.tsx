@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { useTheme } from "@emotion/react";
 import React, { FC } from "react";
-import { TableTopSquareState } from "TableTop/types";
+import { TableTopSquareState } from "features/TableTop/types";
 import { GlobalTheme } from "theme";
 import tableTopSquareStyles from "./TableTopSquare.style";
 

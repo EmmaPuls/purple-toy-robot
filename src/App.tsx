@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import { useTheme } from "@emotion/react";
+import TableTop from "features/TableTop";
 import React, { FC } from "react";
-import TableTop from "TableTop";
 import { GlobalTheme } from "theme";
 import appStyles from "./App.style";
 

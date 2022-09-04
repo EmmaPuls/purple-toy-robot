@@ -1,7 +1,7 @@
 import { CSSObject } from "@emotion/css";
 import { GRID_SIZE } from "config";
-import { TableCellColor } from "TableTop/types";
 import { GlobalTheme } from "theme";
+import { TableCellColor } from "features/TableTop/types";
 
 type TableTopSquareStyle = {
   square: CSSObject;

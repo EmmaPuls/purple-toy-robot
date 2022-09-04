@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import MockedProviderContainer from "../testUtils/MockedProviderContainer";
+import MockedProviderContainer from "testUtils/MockedProviderContainer";
 import TableTop from "./TableTop";
 
 describe("TableTop", () => {
