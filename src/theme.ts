@@ -8,6 +8,7 @@ export type GlobalTheme = {
     invertedText: string;
     error: string;
   };
+  spacing: (multiplier: number) => string;
 };
 
 const globalTheme: GlobalTheme = {
@@ -20,6 +21,7 @@ const globalTheme: GlobalTheme = {
     invertedText: "#EFF7F6",
     error: "#9B1D20",
   },
+  spacing: (multiplier: number) => `${multiplier * 8}px`,
 };
 
 export default globalTheme;
