@@ -1,13 +1,13 @@
 import { CSSObject } from "@emotion/react";
 import { GlobalTheme } from "theme";
 
-type InputStyles = {
+type TextInputStyles = {
   container: CSSObject;
   input: CSSObject;
   label: CSSObject;
 };
 
-const inputStyles = (theme: GlobalTheme): InputStyles => ({
+const textInputStyles = (theme: GlobalTheme): TextInputStyles => ({
   container: {
     display: "flex",
     flexDirection: "row",
@@ -19,16 +19,20 @@ const inputStyles = (theme: GlobalTheme): InputStyles => ({
     alignItems: "center",
   },
   input: {
-    flexGrow: 1,
+    position: "relative",
     borderColor: theme.colors.text,
-    borderRadius: theme.spacing(0.5),
+    borderRadius: theme.spacing(1),
     fontSize: "2rem",
     textTransform: "uppercase",
+    padding: theme.spacing(1),
+    fontFamily: "monospace",
+    outlineColor: theme.colors.interaction,
   },
   label: {
     fontSize: "1.2rem",
     fontWeight: "bold",
+    padding: theme.spacing(1),
   },
 });
 
-export default inputStyles;
+export default textInputStyles;

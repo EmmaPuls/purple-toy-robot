@@ -2,7 +2,7 @@ import { css } from "@emotion/css";
 import { CSSObject, useTheme } from "@emotion/react";
 import { FC } from "react";
 import { GlobalTheme } from "theme";
-import inputStyles from "./TextInput.style";
+import textInputStyles from "./TextInput.style";
 
 interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -12,18 +12,18 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const TextInput: FC<TextInputProps> = (props) => {
-  const { label, ...rest } = props;
+  const { label, containerStyles, labelStyles, inputStyles, ...rest } = props;
   const theme = useTheme() as GlobalTheme;
-  const styles = inputStyles(theme);
+  const styles = textInputStyles(theme);
 
   return (
-    <div className={css(styles.container)}>
+    <div className={css(containerStyles || styles.container)}>
       {label && (
-        <label className={css(styles.label)} htmlFor={rest.id}>
+        <label className={css(labelStyles || styles.label)} htmlFor={rest.id}>
           {label}
         </label>
       )}
-      <input className={css(styles.input)} {...rest} type={"text"}></input>
+      <input className={css(inputStyles || styles.input)} {...rest} type={"text"}></input>
     </div>
   );
 };

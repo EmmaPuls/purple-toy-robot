@@ -32,7 +32,7 @@ const tableTopSquareStyles = (
     },
     overlayText: {
       position: "absolute",
-      bottom: "0px",
+      bottom: "0",
       margin: '0.4em',
       textAlign: 'left',
       fontSize: '1.5em',

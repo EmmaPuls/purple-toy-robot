@@ -3,6 +3,7 @@ export type GlobalTheme = {
     boardDark: string;
     boardLight: string;
     playArea: string;
+    interaction: string;
     background: string;
     text: string;
     invertedText: string;
@@ -17,6 +18,7 @@ const globalTheme: GlobalTheme = {
     boardLight: "#EDFDFB",
     background: "#EFF7F6",
     playArea: "#F2B5D4",
+    interaction: "#D0257A",
     text: "#282c34",
     invertedText: "#EFF7F6",
     error: "#9B1D20",
