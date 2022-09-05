@@ -12,7 +12,6 @@ const textInputStyles = (theme: GlobalTheme): TextInputStyles => ({
     display: 'flex',
     flexDirection: "row",
     gap: theme.spacing(2),
-    width: "100%",
     backgroundColor: theme.colors.background,
     padding: theme.spacing(1),
     borderRadius: theme.spacing(1),

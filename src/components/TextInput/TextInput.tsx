@@ -17,13 +17,13 @@ const TextInput: FC<TextInputProps> = (props) => {
   const styles = textInputStyles(theme);
 
   return (
-    <div className={css(containerStyles || styles.container)}>
+    <div className={css(styles.container, containerStyles)}>
       {label && (
-        <label className={css(labelStyles || styles.label)} htmlFor={rest.id}>
+        <label className={css(styles.label, labelStyles)} htmlFor={rest.id}>
           {label}
         </label>
       )}
-      <input className={css(inputStyles || styles.input)} {...rest} type={"text"}></input>
+      <input className={css(styles.input, inputStyles)} {...rest} type={"text"}></input>
     </div>
   );
 };
