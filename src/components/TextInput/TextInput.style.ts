@@ -9,7 +9,7 @@ type TextInputStyles = {
 
 const textInputStyles = (theme: GlobalTheme): TextInputStyles => ({
   container: {
-    display: "flex",
+    display: 'flex',
     flexDirection: "row",
     gap: theme.spacing(2),
     width: "100%",
@@ -17,6 +17,7 @@ const textInputStyles = (theme: GlobalTheme): TextInputStyles => ({
     padding: theme.spacing(1),
     borderRadius: theme.spacing(1),
     alignItems: "center",
+    flexShrink: 1,
   },
   input: {
     position: "relative",
@@ -27,6 +28,7 @@ const textInputStyles = (theme: GlobalTheme): TextInputStyles => ({
     padding: theme.spacing(1),
     fontFamily: "monospace",
     outlineColor: theme.colors.interaction,
+    flexGrow: 1,
   },
   label: {
     fontSize: "1.2rem",
