@@ -32,13 +32,17 @@ const tableTopSquareStyles = (
     },
     overlayText: {
       position: "absolute",
-      bottom: "0",
+      bottom: "-0.4em",
+      left: '-0.4em',
       margin: '0.4em',
+      padding: '0.2em',
       textAlign: 'left',
-      fontSize: '1.5em',
+      fontSize: '90%',
+      whiteSpace: 'nowrap',
       lineHeight: '1em',
       fontWeight: 'bold',
-      opacity: '0.5',
+      opacity: '0.7',
+      backgroundColor: theme.colors.boardLight,
     }
   };
 };

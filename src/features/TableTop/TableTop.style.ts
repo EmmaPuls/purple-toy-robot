@@ -3,27 +3,12 @@ import { GRID_SIZE } from "config";
 import { GlobalTheme } from "theme";
 
 type TableTopStyles = {
-  container: CSSObject;
   tableTop: CSSObject;
 };
 
 const stringOfColOrRowSizes = new Array(GRID_SIZE).fill("1fr").join(" ");
 
 const tableTopStyles = (theme: GlobalTheme): TableTopStyles => ({
-  container: {
-    alignItems: "center",
-    backgroundColor: theme.colors.playArea,
-    borderRadius: theme.spacing(1),
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "row",
-    gap: theme.spacing(2),
-    minHeight: "80vh",
-    justifyContent: "center",
-    padding: theme.spacing(2),
-    minWidth: "80vw",
-    margin: theme.spacing(2),
-  },
   tableTop: {
     border: theme.spacing(1),
     borderColor: theme.colors.boardDark,

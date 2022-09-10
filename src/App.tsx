@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { useTheme } from "@emotion/react";
+import CommandCenter from "features/CommandCenter";
 import TableTop from "features/TableTop";
 import React, { FC } from "react";
 import { GlobalTheme } from "theme";
@@ -15,10 +16,13 @@ const App: FC = () => {
         <h1>Emma's Toy Robot</h1>
       </header>
       <div className={css(styles.body)}>
-        <TableTop />
+        <div className={css(styles.container)}>
+          <TableTop />
+          <CommandCenter />
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;
