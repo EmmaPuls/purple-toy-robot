@@ -1,7 +1,7 @@
 import { Theme, ThemeProvider } from "@emotion/react";
 import { defaultTo } from "lodash";
 import React, { FC } from 'react';
-import globalTheme from "../theme";
+import myTheme from "../theme";
 
 type MockedProviderContainerProps = {
   theme?: Theme;
@@ -10,7 +10,7 @@ type MockedProviderContainerProps = {
 
 const MockedProviderContainer: FC<MockedProviderContainerProps> = ({ children, theme }) => {
   return (
-    <ThemeProvider theme={defaultTo(theme, globalTheme)}>
+    <ThemeProvider theme={defaultTo(theme, myTheme)}>
       {children}
     </ThemeProvider>
   );

@@ -9,6 +9,5 @@ test("renders header", () => {
       <App />
     </MockedProviderContainer>
   );
-  const linkElement = screen.getByText("Emma's Toy Robot");
-  expect(linkElement).toBeInTheDocument();
+  screen.getByText("Emma's Toy Robot");
 });

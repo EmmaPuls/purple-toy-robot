@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
 import { injectGlobal } from "@emotion/css";
-import globalTheme from "theme";
+import myTheme from "theme";
 import App from "App";
 import RootErrorBoundary from "features/ErrorBoundaries/RootErrorBoundary";
 
@@ -28,7 +28,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RootErrorBoundary>
-      <ThemeProvider theme={globalTheme}>
+      <ThemeProvider theme={myTheme}>
         <RootErrorBoundary themeLoaded>
           <App />
         </RootErrorBoundary>

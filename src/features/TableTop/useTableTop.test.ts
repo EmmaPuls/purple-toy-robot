@@ -1,4 +1,4 @@
-import { GRID_SIZE } from "config";
+import { GRID_SIZE } from "config/config";
 import {
   _createSquareMatrixFromArray,
   _isEvenColumn,

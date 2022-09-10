@@ -1,5 +1,5 @@
 import { CSSObject } from "@emotion/css";
-import { GRID_SIZE } from "config";
+import { GRID_SIZE } from "config/config";
 import { GlobalTheme } from "theme";
 
 type TableTopStyles = {

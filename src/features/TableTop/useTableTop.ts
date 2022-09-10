@@ -1,4 +1,4 @@
-import { GRID_SIZE } from "config";
+import { GRID_SIZE } from "config/config";
 import { useState } from "react";
 import { TableCellColor, TableTopSquareState } from "./types";
 
