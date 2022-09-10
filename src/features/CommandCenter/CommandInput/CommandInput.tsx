@@ -17,11 +17,13 @@ const CommandInput: FC = () => {
         id={"command-input"}
         label={"Command Input"}
         sx={{ flexGrow: 1 }}
-        onKeyDown={handleSubmit}
+        onKeyDown={(e) => handleSubmit(e.key)}
         error={error}
         value={value}
-        onChange={onChange}
-        inputProps={{ style: { textTransform: "uppercase", fontFamily: 'monospace' } }}
+        onChange={(e) => onChange(e.currentTarget.value)}
+        inputProps={{
+          style: { textTransform: "uppercase", fontFamily: "monospace" },
+        }}
       />
     </div>
   );

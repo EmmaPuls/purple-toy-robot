@@ -1,13 +1,13 @@
 import { getPatternsAsRegex } from "config/acceptableCommands";
-import { KeyboardEventHandler, useState } from "react";
+import { useState } from "react";
 
 const useCommandInput = () => {
   const pattern = getPatternsAsRegex();
   const [error, setError] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 
-  const handleSubmit: KeyboardEventHandler<HTMLDivElement> = (event) => {
-    if (event.key === "Enter") {
+  const handleSubmit = (key: string) => {
+    if (key === "Enter") {
       const command = value.toUpperCase();
       const isValid = pattern.test(command);
       setError(!isValid);
@@ -15,11 +15,11 @@ const useCommandInput = () => {
     }
   };
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (value: string) => {
     if (error) {
       setError(false);
     }
-    setValue(event.currentTarget.value);
+    setValue(value);
   };
 
   return {
