@@ -1,15 +1,16 @@
-import { getPatternsAsRegex } from "config/acceptableCommands";
+import { findMatchingPattern, getPatternsAsRegex } from "config/commands";
 import { useState } from "react";
 
 const useCommandInput = () => {
-  const pattern = getPatternsAsRegex();
+  const patterns = getPatternsAsRegex();
   const [error, setError] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 
   const handleSubmit = (key: string) => {
     if (key === "Enter") {
       const command = value.toUpperCase();
-      const isValid = pattern.test(command);
+      const matchingPattern = findMatchingPattern(command, patterns);
+      const isValid = Boolean(matchingPattern);
       setError(!isValid);
       setValue("");
     }

@@ -1,4 +1,4 @@
-import { getPatternsAsRegex } from "./acceptableCommands";
+import { findMatchingPattern, getPatternsAsRegex } from "./commands";
 import { GRID_SIZE } from "./config";
 
 const MOCK_GRID_SIZE = 201;
@@ -12,14 +12,14 @@ describe("acceptableCommands", () => {
       it("should correctly match valid commands", () => {
         cardinalDirections.forEach((direction) => {
           const command = `PLACE,0,${GRID_SIZE},${direction}`;
-          const isValid = regex.test(command);
+          const isValid = findMatchingPattern(command, regex);
           expect(isValid).toBeTruthy();
         });
       });
 
       it("should correctly fail invalid commands", () => {
         const command = `PLACE 0 0 NORTH`;
-        const isValid = regex.test(command);
+        const isValid = findMatchingPattern(command, regex);
         expect(isValid).toBeFalsy();
       });
 
@@ -31,7 +31,7 @@ describe("acceptableCommands", () => {
             MOCK_GRID_SIZE - 30
           },${MOCK_GRID_SIZE},NORTH`;
           console.log("command - ", command);
-          const isValid = regex.test(command);
+          const isValid = findMatchingPattern(command, regex);
           expect(isValid).toBeTruthy();
         });
       });

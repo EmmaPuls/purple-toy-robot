@@ -8,6 +8,7 @@ specifiers:
   '@emotion/eslint-plugin': ^11.10.0
   '@emotion/react': ^11.10.4
   '@emotion/styled': ^11.10.4
+  '@mui/icons-material': ^5.10.3
   '@mui/material': ^5.10.4
   '@testing-library/dom': 7.21.4
   '@testing-library/jest-dom': ^5.16.5
@@ -19,6 +20,7 @@ specifiers:
   '@types/node': ^16.11.56
   '@types/react': ^18.0.18
   '@types/react-dom': ^18.0.6
+  Forward: link:@mui/icons-material/Forward
   eslint: '8'
   lodash: ^4.17.21
   react: ^18.2.0
@@ -35,12 +37,14 @@ dependencies:
   '@emotion/eslint-plugin': 11.10.0_eslint@8.23.0
   '@emotion/react': 11.10.4_p6fq7jdyqwnykllwwkx4b6uid4
   '@emotion/styled': 11.10.4_lxst47gwu5lqjtx2guwl7nfnjm
+  '@mui/icons-material': 5.10.3_dtruv572645qlhu5xokhjjhjka
   '@mui/material': 5.10.4_vbxcdxy3bftsefaguotlgalomu
   '@types/jest': 27.5.2
   '@types/lodash': 4.14.184
   '@types/node': 16.11.58
   '@types/react': 18.0.18
   '@types/react-dom': 18.0.6
+  Forward: link:@mui/icons-material/Forward
   lodash: 4.17.21
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2124,6 +2128,23 @@ packages:
 
   /@mui/core-downloads-tracker/5.10.4:
     resolution: {integrity: sha512-VGekVa9dleJ+ii47+gXvKUV5a11T0nsjXN8bk5NqiJRQWRCAhbTHgsfZuctNcMeLW9FSf2gu6U0k2U6rhABKcA==}
+    dev: false
+
+  /@mui/icons-material/5.10.3_dtruv572645qlhu5xokhjjhjka:
+    resolution: {integrity: sha512-o0kbUlsWCBtCE0wP33cGKbyryCh7kpm2EECYMPDmWrLhbA+HUODXIdhiTFS26szp2xXo9HY1lEx0ufeJ+tddYw==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.0.0
+      '@types/react': ^17.0.0 || ^18.0.0
+      react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@mui/material': 5.10.4_vbxcdxy3bftsefaguotlgalomu
+      '@types/react': 18.0.18
+      react: 18.2.0
     dev: false
 
   /@mui/material/5.10.4_vbxcdxy3bftsefaguotlgalomu:

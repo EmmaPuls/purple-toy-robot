@@ -1,6 +1,6 @@
 import { GRID_SIZE } from "config/config";
+import { TableCellColor, TableTopSquareState } from "features/types";
 import { useState } from "react";
-import { TableCellColor, TableTopSquareState } from "./types";
 
 type TableTopHookResult = {
   tableTopSquares: TableTopSquareState[];

@@ -1,18 +1,17 @@
 import { CSSObject } from "@emotion/css";
-import { GRID_SIZE } from "config/config";
+import { TableCellColor } from "features/types";
 import { GlobalTheme } from "theme";
-import { TableCellColor } from "features/TableTop/types";
 
 type TableTopSquareStyle = {
   square: CSSObject;
   description: CSSObject;
+  robot: CSSObject;
 };
-
-const squareDimension = Math.floor(100 / GRID_SIZE);
 
 const tableTopSquareStyles = (
   theme: GlobalTheme,
   color: TableCellColor,
+  squareDimension: number
 ): TableTopSquareStyle => {
   const colorMap = {
     [TableCellColor.color1]: theme.colors.boardDark,
@@ -25,12 +24,15 @@ const tableTopSquareStyles = (
       minWidth: `${squareDimension}%`,
     },
     description: {
-      fontSize: '1.5em',
-      lineHeight: '2em',
-      fontWeight: 'bold',
-      overflow: 'visible',
-      pointerEvents: 'none',
-    }
+      fontSize: "1.5em",
+      lineHeight: "2em",
+      fontWeight: "bold",
+      overflow: "visible",
+      pointerEvents: "none",
+    },
+    robot: {
+      fontSize: `${squareDimension}%`,
+    },
   };
 };
 
