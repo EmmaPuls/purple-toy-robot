@@ -20,6 +20,10 @@ const styleMap = (styles: HistoryEntryStyles): StyleMap => ({
   [EntryType.RESULT]: styles.result,
 });
 
+/**
+ * Functional component representing a single history entry.
+ * History entries are displayed in the command output box.
+ */
 const HistoryEntry: FC<HistoryEntryProps> = ({ entry }) => {
   const theme = useTheme() as GlobalTheme;
   const styles = historyEntryStyles(theme);

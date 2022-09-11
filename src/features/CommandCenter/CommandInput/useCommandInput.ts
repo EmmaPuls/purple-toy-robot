@@ -5,6 +5,9 @@ import { findMatchingPattern, getPatternsAsRegex } from "../commands";
 import { EntryType, updateHistory } from "../commandSlice";
 import { handleCommand } from "../handleCommandThunk";
 
+/**
+ * Custom hook to handle the command input
+ */
 const useCommandInput = () => {
   const dispatch = useDispatch<AppDispatch>();
   const patterns = getPatternsAsRegex();

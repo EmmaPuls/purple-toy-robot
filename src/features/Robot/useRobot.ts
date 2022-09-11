@@ -12,6 +12,9 @@ export const directionMap = {
   [RobotDirection.WEST]: "rotate(180deg)",
 };
 
+/**
+ * Custom hook for handling the robot's direction.
+ */
 export const useRobot = (direction: RobotDirection): useRobotResult => {
   const [transformRobot, setTransformRobot] = useState<string>("");
 

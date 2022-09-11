@@ -4,6 +4,10 @@ const defaultTheme = createTheme();
 
 export type GlobalTheme = Theme & MyTheme;
 
+/**
+ * An artifact from the original theme, which was a custom theme.
+ * Eventually would want to move this into the MUI theme.
+ */
 export interface MyTheme {
   colors: {
     boardDark: string;

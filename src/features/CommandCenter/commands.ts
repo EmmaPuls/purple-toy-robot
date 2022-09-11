@@ -26,6 +26,11 @@ const gridRange = (gridSize: number) => {
   }
 };
 
+/**
+ * Dynamically builds the regex for the PLACE command
+ * @param gridSize the maximum size of the grid
+ * @returns RegExp for the PLACE commands
+ */
 const getPlaceRegex = (gridSize: number): RegExp =>
   new RegExp(
     `^PLACE,${gridRange(gridSize)},${gridRange(
@@ -38,20 +43,20 @@ const getLeftRegex = (): RegExp => new RegExp("^LEFT$");
 const getRightRegex = (): RegExp => new RegExp("^RIGHT$");
 const getReportRegex = (): RegExp => new RegExp("^REPORT$");
 
-const commands = (gridSize: number): CommandPatterns => ({
-  place: getPlaceRegex(gridSize),
-  move: getMoveRegex(),
-  left: getLeftRegex(),
-  right: getRightRegex(),
-  report: getReportRegex(),
-});
-
-const buildPattern = (gridSize: number) => {
-  return commands(gridSize);
-};
-
-export const getPatternsAsRegex = (gridSize: number = GRID_SIZE) => {
-  return buildPattern(gridSize);
+/**
+ * Builds the commands needed for the command center,
+ * this object allows for easy tracking of which command was used
+ */
+export const getPatternsAsRegex = (
+  gridSize: number = GRID_SIZE
+): CommandPatterns => {
+  return {
+    place: getPlaceRegex(gridSize),
+    move: getMoveRegex(),
+    left: getLeftRegex(),
+    right: getRightRegex(),
+    report: getReportRegex(),
+  };
 };
 
 export const findMatchingPattern = (

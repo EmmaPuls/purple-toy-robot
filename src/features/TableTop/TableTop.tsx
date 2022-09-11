@@ -6,6 +6,9 @@ import tableTopStyles from "./TableTop.style";
 import TableTopSquare from "./TableTopSquare";
 import useTableTop from "./useTableTop";
 
+/**
+ * Functional component representing the table top/ board.
+ */
 const TableTop: FC = () => {
   const theme = useTheme() as GlobalTheme;
   const styles = tableTopStyles(theme);

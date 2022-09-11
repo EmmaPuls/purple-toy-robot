@@ -5,9 +5,11 @@ import { GlobalTheme } from "theme";
 import CommandInput from "./CommandInput";
 import CommandOutput from "./CommandOutput";
 
+/**
+ * Functional component representing the command input and output.
+ */
 const CommandCenter: FC = () => {
   const theme = useTheme() as GlobalTheme;
-  // Add pattern param for command patterns
   return (
     <div
       className={css({

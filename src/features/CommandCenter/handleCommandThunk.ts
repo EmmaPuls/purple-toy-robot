@@ -20,6 +20,11 @@ interface HandleCommandInput {
   matchingPattern: CommandType;
 }
 
+/**
+ * Checks if the robot is currently placed and if it can move forward
+ * @param position current position of the robot
+ * @returns true if the robot can move forward
+ */
 export const canRobotMoveForward = (position?: RobotPosition) => {
   if (!position) {
     return false;
@@ -36,6 +41,10 @@ export const canRobotMoveForward = (position?: RobotPosition) => {
   }
 };
 
+/**
+ * Thunk for handling all the different types of commands
+ * and updating the state accordingly
+ */
 export const handleCommand = createAsyncThunk<
   any,
   HandleCommandInput,

@@ -1,7 +1,6 @@
-import { GRID_SIZE } from "config/config";
 import { RobotPosition } from "features/Robot/robotSlice";
 import { TableTopSquareState } from "features/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "store";
 import { initTableTopSquares } from "./squareCalcs";
@@ -15,15 +14,10 @@ type TableTopHookResult = {
 };
 
 const useTableTop = (): TableTopHookResult => {
-  const [squareSize, setSquareSize] = useState<number>(GRID_SIZE);
   const [tableTopSquares, setTableTopSquares] = useState<TableTopSquareState[]>(
-    () => initTableTopSquares(squareSize)
+    () => initTableTopSquares()
   );
   const robotPosition = useSelector((state: AppState) => state.robot.position);
-
-  useEffect(() => {
-    setSquareSize(GRID_SIZE);
-  }, []);
 
   return {
     tableTopSquares,

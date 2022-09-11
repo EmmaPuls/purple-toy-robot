@@ -10,6 +10,10 @@ type ErrorPageProps = {
   themed?: boolean;
 };
 
+/**
+ * Functional component representing an error page.
+ * Can only be rendered if theme is available.
+ */
 const ErrorPage: FC<ErrorPageProps> = ({ title, body, themed = false }) => {
   const theme = useTheme() as GlobalTheme;
   const styles = errorPageStyles(theme);

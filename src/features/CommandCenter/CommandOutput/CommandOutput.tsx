@@ -7,6 +7,9 @@ import { GlobalTheme } from "theme";
 import commandStyles from "../Command.styles";
 import HistoryEntry from "../HistoryEntry";
 
+/** 
+ * Functional component representing the command output box.
+ */
 const CommandOutput: FC = () => {
   const theme = useTheme() as GlobalTheme;
   const styles = commandStyles(theme);

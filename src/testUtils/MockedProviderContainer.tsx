@@ -10,6 +10,9 @@ type MockedProviderContainerProps = {
   children: React.ReactNode;
 };
 
+/**
+ * MockedProvider with theme and redux store for testing.
+ */
 const MockedProviderContainer: FC<MockedProviderContainerProps> = ({
   children,
   theme,

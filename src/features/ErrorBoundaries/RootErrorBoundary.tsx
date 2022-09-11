@@ -15,6 +15,11 @@ interface State {
   body: string;
 }
 
+/**
+ * Component representing an error boundary.
+ * Can render if theme is not available.
+ * Will render with styles if theme is available.
+ */
 class RootErrorBoundary extends Component<Props, State> {
   state: State = {
     hasError: false,

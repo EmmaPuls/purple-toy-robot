@@ -21,6 +21,11 @@ export const initialCommandState: CommandState = {
   history: [],
 };
 
+/**
+ * Slice for handling the command history
+ * and the list of commands that have been executed
+ * (list of commands could be used to implement undo/redo)
+ */
 export const commandSlice = createSlice({
   name: "commands",
   initialState: initialCommandState,

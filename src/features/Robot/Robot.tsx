@@ -3,6 +3,9 @@ import { RobotDirection } from "features/types";
 import { FC } from "react";
 import { useRobot } from "./useRobot";
 
+/**
+ * Functional component representing the robot.
+ */
 const Forward: FC<{ robotDirection: RobotDirection }> = ({
   robotDirection,
 }) => {

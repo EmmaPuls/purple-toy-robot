@@ -21,6 +21,9 @@ export const initialRobotState: RobotState = {
   position: undefined,
 };
 
+/**
+ * Slice for handling the robot's position and direction
+ */
 export const robotSlice = createSlice({
   name: "robot",
   initialState: initialRobotState,

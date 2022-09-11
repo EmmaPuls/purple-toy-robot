@@ -6,6 +6,9 @@ import { GlobalTheme } from "theme";
 import commandStyles from "../Command.styles";
 import useCommandInput from "./useCommandInput";
 
+/**
+ * Functional component representing the command input box.
+ */
 const CommandInput: FC = () => {
   const theme = useTheme() as GlobalTheme;
   const styles = commandStyles(theme);
