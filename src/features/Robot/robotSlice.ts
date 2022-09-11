@@ -23,6 +23,9 @@ export const robotSlice = createSlice({
     placeRobot: (state, action: PayloadAction<RobotPosition>) => {
       state.position = action.payload;
     },
+    clearRobot: (state) => {
+      state.position = null;
+    },
     moveRobotForward: (state) => {
       if (state.position) {
         switch (state.position.direction) {
@@ -88,6 +91,6 @@ export const robotSlice = createSlice({
   },
 });
 
-export const { placeRobot, moveRobotForward, moveRobotLeft, moveRobotRight } = robotSlice.actions;
+export const { placeRobot, moveRobotForward, moveRobotLeft, moveRobotRight, clearRobot } = robotSlice.actions;
 
 export default robotSlice.reducer;

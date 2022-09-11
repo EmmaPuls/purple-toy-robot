@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react-hooks";
 import MockedProviderContainer from "testUtils/MockedProviderContainer";
 import useCommandInput from "./useCommandInput";
 
@@ -31,6 +31,29 @@ describe("useCommandInput", () => {
       onChange("test");
 
       expect(result.current.value).toBe("test");
+    });
+
+    it("should clear errors", () => {
+      const { result } = renderHook(() => useCommandInput(), {
+        wrapper: MockedProviderContainer,
+      });
+
+      // Wrap all actions in act to make sure they are batched
+      act(async () => {
+        result.current.onChange("test");
+      });
+      expect(result.current.value).toBe("test");
+
+      act(async () => {
+        result.current.handleSubmit("Enter");
+      });
+      expect(result.current.error).toBe(true);
+
+      act(async () => {
+        result.current.onChange("test2");
+      });
+      expect(result.current.value).toBe("test2");
+      expect(result.current.error).toBe(false);
     });
   });
 

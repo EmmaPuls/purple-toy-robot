@@ -19,7 +19,7 @@ const CommandOutput: FC = () => {
         htmlFor="output-box"
         className={css(styles.label)}
       >
-        Command Ouput
+        Command Output
       </label>
       <div
         id="output-box"

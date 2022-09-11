@@ -19,6 +19,7 @@ const commandStyles = (theme: GlobalTheme): CommandStyles => ({
     minHeight: "3rem",
     flexShrink: 1,
     maxHeight: '16em',
+    maxWidth: '74vmin',
   },
   border: {
     flex: 1,

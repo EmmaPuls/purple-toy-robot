@@ -11,7 +11,7 @@ export type HistoryEntry = {
   value: string;
 }
 
-interface CommandState {
+export interface CommandState {
   commandList: string[];
   history: HistoryEntry[];
 }

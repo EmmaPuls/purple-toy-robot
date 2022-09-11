@@ -28,10 +28,13 @@ const useCommandInput = () => {
         dispatch(updateHistory({ type: EntryType.COMMAND, value: command }));
       } else {
         dispatch(
-          updateHistory({
-            type: EntryType.ERROR,
-            value: `Invalid command: "${command}"`,
-          })
+          updateHistory([
+            {
+              type: EntryType.ERROR,
+              value: `Invalid command:`,
+            },
+            { type: EntryType.ERROR, value: command },
+          ])
         );
         setError(!isValid);
       }
@@ -50,7 +53,6 @@ const useCommandInput = () => {
     handleSubmit,
     onChange,
     error,
-    setError,
     value,
   };
 };

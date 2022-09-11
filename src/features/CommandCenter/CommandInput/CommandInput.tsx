@@ -22,7 +22,12 @@ const CommandInput: FC = () => {
         value={value}
         onChange={(e) => onChange(e.currentTarget.value)}
         inputProps={{
-          style: { textTransform: "uppercase", fontFamily: "monospace" },
+          style: {
+            textTransform: "uppercase",
+            fontFamily: "monospace",
+          },
+          "data-testid": "command-input",
+          // type: "text",
         }}
       />
     </div>

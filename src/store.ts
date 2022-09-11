@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import robotReducer, { initialRobotState } from "features/Robot/robotSlice";
+import robotReducer,{ initialRobotState } from "features/Robot/robotSlice";
 import commandReducer, {
   initialCommandState,
 } from "features/CommandCenter/commandSlice";

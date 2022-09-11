@@ -10,6 +10,7 @@ const Forward: FC<{ robotDirection: RobotDirection }> = ({
 
   return (
     <ForwardIcon
+      data-testid="forward"
       sx={{
         width: "inherit",
         height: "inherit",

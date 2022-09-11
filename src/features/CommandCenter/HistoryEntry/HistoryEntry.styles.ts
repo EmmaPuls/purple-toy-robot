@@ -20,6 +20,7 @@ const historyEntryStyles = (theme: GlobalTheme): HistoryEntryStyles => ({
     fontSize: '1em',
     lineHeight: '1.5em',
     textAlign: 'left',
+    textWrap: 'normal',
   }
 });
 
