@@ -5,21 +5,14 @@ import { GlobalTheme } from "theme";
 import tableTopSquareStyles from "./TableTopSquare.style";
 import Popover from "@mui/material/Popover";
 import useDescriptionPopover from "./useDescriptionPopover";
-import ForwardIcon from "@mui/icons-material/Forward";
 import { GRID_SIZE } from "config/config";
 import { Direction, TableTopSquareState } from "features/types";
+import Forward from "features/Robot";
 
 type TableTopSquareProps = {
   state: TableTopSquareState;
   number: number;
 };
-
-const directionMap: Record<Direction, string> = {
-  [Direction.NORTH]: 'rotate(270deg)',
-  [Direction.SOUTH]: 'rotate(90deg)',
-  [Direction.EAST]: 'rotate(0deg)',
-  [Direction.WEST]: 'rotate(180deg)',
-}
 
 const TableTopSquare: FC<TableTopSquareProps> = ({ state, number }) => {
   const theme = useTheme() as GlobalTheme;
@@ -42,13 +35,7 @@ const TableTopSquare: FC<TableTopSquareProps> = ({ state, number }) => {
         onMouseEnter={handleDescriptionOpen}
         onMouseLeave={handleDescriptionClose}
       >
-        <ForwardIcon
-          sx={{
-            width: "inherit",
-            height: "inherit",
-            transform: directionMap[Direction.WEST],
-          }}
-        />
+        <Forward direction={Direction.NORTH} />
       </div>
       <Popover
         id="square-description"

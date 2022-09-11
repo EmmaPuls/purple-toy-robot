@@ -1,7 +1,5 @@
+import { GRID_SIZE } from "config/config";
 import { findMatchingPattern, getPatternsAsRegex } from "./commands";
-import { GRID_SIZE } from "./config";
-
-const MOCK_GRID_SIZE = 201;
 
 const cardinalDirections = ["NORTH", "SOUTH", "EAST", "WEST"];
 describe("acceptableCommands", () => {
@@ -24,6 +22,7 @@ describe("acceptableCommands", () => {
       });
 
       describe("GRID_SIZE is greater than 9", () => {
+        const MOCK_GRID_SIZE = 201;
         const regex = getPatternsAsRegex(MOCK_GRID_SIZE);
 
         it("should correctly match valid commands", () => {

@@ -1,5 +1,5 @@
-import { findMatchingPattern, getPatternsAsRegex } from "config/commands";
 import { useState } from "react";
+import { findMatchingPattern, getPatternsAsRegex } from "../commands";
 
 const useCommandInput = () => {
   const patterns = getPatternsAsRegex();
