@@ -47,6 +47,7 @@ const TableTopSquare: FC<TableTopSquareProps> = ({
         {canRenderRobot && <Forward robotDirection={robotDirection} />}
       </div>
       <Popover
+        data-testid={`Popover-${number}`}
         id="square-description"
         open={open}
         anchorEl={squareDescription}

@@ -9,11 +9,11 @@ export type RobotPosition = {
 };
 
 export type RobotState = {
-  position: RobotPosition | null;
+  position: RobotPosition | undefined;
 };
 
 export const initialRobotState: RobotState = {
-  position: null,
+  position: undefined,
 };
 
 export const robotSlice = createSlice({
@@ -24,7 +24,7 @@ export const robotSlice = createSlice({
       state.position = action.payload;
     },
     clearRobot: (state) => {
-      state.position = null;
+      state.position = undefined;
     },
     moveRobotForward: (state) => {
       if (state.position) {
@@ -91,6 +91,12 @@ export const robotSlice = createSlice({
   },
 });
 
-export const { placeRobot, moveRobotForward, moveRobotLeft, moveRobotRight, clearRobot } = robotSlice.actions;
+export const {
+  placeRobot,
+  moveRobotForward,
+  moveRobotLeft,
+  moveRobotRight,
+  clearRobot,
+} = robotSlice.actions;
 
 export default robotSlice.reducer;

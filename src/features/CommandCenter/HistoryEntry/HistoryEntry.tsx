@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import { CSSObject, useTheme } from "@emotion/react";
+import { Divider } from "@mui/material";
 import { FC } from "react";
 import { GlobalTheme } from "theme";
 import { EntryType, HistoryEntry as HistoryEntryType } from "../commandSlice";
@@ -24,9 +25,18 @@ const HistoryEntry: FC<HistoryEntryProps> = ({ entry }) => {
   const styles = historyEntryStyles(theme);
 
   return (
-    <p className={css({ ...styles.entry, ...styleMap(styles)[entry.type] })}>
-      {entry.value}
-    </p>
+    <>
+      <div
+        className={css({ ...styles.entry, ...styleMap(styles)[entry.type] })}
+      >
+        {entry.value.split("\n").map((line, index) => (
+          <p className={css(styles.groupedLines)} key={`entry-line-${index}`}>
+            {line}
+          </p>
+        ))}
+      </div>
+      <Divider />
+    </>
   );
 };
 

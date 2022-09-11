@@ -1,16 +1,15 @@
-import { placeRobot } from "features/Robot/robotSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { AppDispatch } from "store";
 import {
-  CommandType,
   findMatchingPattern,
   getPatternsAsRegex,
 } from "../commands";
-import { addCommand, EntryType, updateHistory } from "../commandSlice";
-import { parsePlace } from "../helpers";
+import { EntryType, updateHistory } from "../commandSlice";
+import { handleCommand } from "../handleCommandThunk";
 
 const useCommandInput = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const patterns = getPatternsAsRegex();
   const [error, setError] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
@@ -19,21 +18,18 @@ const useCommandInput = () => {
     if (key === "Enter") {
       const command = value.toUpperCase();
       const matchingPattern = findMatchingPattern(command, patterns);
+      console.log("matchingPattern", matchingPattern);
       const isValid = Boolean(matchingPattern);
-      if (isValid) {
-        if (matchingPattern === CommandType.place) {
-          dispatch(placeRobot(parsePlace(command)));
-        }
-        dispatch(addCommand(command));
-        dispatch(updateHistory({ type: EntryType.COMMAND, value: command }));
+      if (isValid && matchingPattern) {
+        dispatch(handleCommand({ command, matchingPattern }));
       } else {
         dispatch(
           updateHistory([
             {
               type: EntryType.ERROR,
-              value: `Invalid command:`,
+              value: `Invalid command:
+              ${command}`,
             },
-            { type: EntryType.ERROR, value: command },
           ])
         );
         setError(!isValid);

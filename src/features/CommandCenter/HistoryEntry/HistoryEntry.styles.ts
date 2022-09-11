@@ -6,6 +6,7 @@ export type HistoryEntryStyles = {
   command: CSSObject;
   result: CSSObject;
   entry: CSSObject;
+  groupedLines: CSSObject;
 };
 
 const historyEntryStyles = (theme: GlobalTheme): HistoryEntryStyles => ({
@@ -21,6 +22,9 @@ const historyEntryStyles = (theme: GlobalTheme): HistoryEntryStyles => ({
     lineHeight: '1.5em',
     textAlign: 'left',
     textWrap: 'normal',
+  },
+  groupedLines: {
+    lineHeight: '1em',
   }
 });
 

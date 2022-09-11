@@ -19,7 +19,7 @@ describe("robotSlice", () => {
       store.dispatch(moveRobotForward());
 
       // Assert
-      expect(store.getState().robot.position).toBeNull();
+      expect(store.getState().robot.position).toBeUndefined();
     });
 
     describe("given there is space to move forward", () => {
@@ -187,7 +187,7 @@ describe("robotSlice", () => {
       store.dispatch(moveRobotLeft());
 
       // Assert
-      expect(store.getState().robot.position).toBeNull();
+      expect(store.getState().robot.position).toBeUndefined();
     });
 
     test.each([
@@ -225,7 +225,7 @@ describe("robotSlice", () => {
       store.dispatch(moveRobotLeft());
 
       // Assert
-      expect(store.getState().robot.position).toBeNull();
+      expect(store.getState().robot.position).toBeUndefined();
     });
 
     test.each([

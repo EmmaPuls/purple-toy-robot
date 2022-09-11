@@ -11,7 +11,7 @@ type TableTopHookResult = {
   setTableTopSquares: React.Dispatch<
     React.SetStateAction<TableTopSquareState[]>
   >;
-  robotPosition: RobotPosition | null;
+  robotPosition?: RobotPosition;
 };
 
 const useTableTop = (): TableTopHookResult => {
