@@ -18,7 +18,6 @@ describe("_createSquareMatrixFromArray", () => {
       [3, 4],
     ];
     const actual = _createSquareMatrixFromArray(array);
-    console.log(actual);
     expect(actual).toEqual(expected);
   });
 });

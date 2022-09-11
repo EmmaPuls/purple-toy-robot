@@ -29,7 +29,6 @@ describe("acceptableCommands", () => {
           const command = `PLACE,${
             MOCK_GRID_SIZE - 30
           },${MOCK_GRID_SIZE},NORTH`;
-          console.log("command - ", command);
           const isValid = findMatchingPattern(command, regex);
           expect(isValid).toBeTruthy();
         });
