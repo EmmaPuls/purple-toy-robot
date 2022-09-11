@@ -7,9 +7,40 @@ import {
   moveRobotLeft,
   moveRobotRight,
   placeRobot,
+  placeRobotWithoutDirection,
 } from "./robotSlice";
 
 describe("robotSlice", () => {
+  describe("placeRobotWithoutDirection", () => {
+    it("should place robot at 0,0", () => {
+      // Setup
+      store.dispatch(
+        placeRobot({ row: 0, col: 0, direction: RobotDirection.NORTH })
+      );
+
+      // Act
+      store.dispatch(placeRobotWithoutDirection({ row: 2, col: 2 }));
+
+      // Assert
+      expect(store.getState().robot.position).toEqual({
+        row: 2,
+        col: 2,
+        direction: RobotDirection.NORTH,
+      });
+    });
+
+    it("should not place robot if it is not currently placed", () => {
+      // Setup
+      store.dispatch(clearRobot());
+
+      // Act
+      store.dispatch(placeRobotWithoutDirection({ row: 2, col: 2 }));
+
+      // Assert
+      expect(store.getState().robot.position).toBeUndefined();
+    });
+  });
+
   describe("moveRobotForward", () => {
     it("should not move if robot is not placed", () => {
       // Setup

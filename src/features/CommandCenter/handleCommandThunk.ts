@@ -5,6 +5,7 @@ import {
   moveRobotLeft,
   moveRobotRight,
   placeRobot,
+  placeRobotWithoutDirection,
   RobotPosition,
 } from "features/Robot/robotSlice";
 import { RobotDirection } from "features/types";
@@ -53,8 +54,23 @@ export const handleCommand = createAsyncThunk<
     switch (matchingPattern as CommandType) {
       case CommandType.place: {
         const parsedCommand = parsePlace(command);
-        dispatch(placeRobot(parsedCommand));
-        handleExecutedCommands(command);
+        if (!parsedCommand.direction && !state.robot.position) {
+          dispatch(
+            updateHistory({
+              type: EntryType.ERROR,
+              value: `Invalid command: "${command}"
+              Robot must be placed on the board with a direction.`,
+            })
+          );
+          return;
+        } else if (!parsedCommand.direction) {
+          console.log("place without direction");
+          dispatch(placeRobotWithoutDirection(parsedCommand));
+          handleExecutedCommands(command);
+        } else {
+          dispatch(placeRobot(parsedCommand));
+          handleExecutedCommands(command);
+        }
         break;
       }
       case CommandType.move: {
@@ -63,7 +79,7 @@ export const handleCommand = createAsyncThunk<
             updateHistory({
               type: EntryType.ERROR,
               value: `Invalid command: "${command}"
-              Robot must be placed on the grid before moving.`,
+              Robot must be placed on the table before moving.`,
             })
           );
         } else if (canRobotMoveForward(state.robot.position)) {
@@ -86,7 +102,7 @@ export const handleCommand = createAsyncThunk<
             updateHistory({
               type: EntryType.ERROR,
               value: `Invalid command: "${command}"
-              Robot must be placed on the grid before turning left.`,
+              Robot must be placed on the table before turning left.`,
             })
           );
         } else {
@@ -101,12 +117,30 @@ export const handleCommand = createAsyncThunk<
             updateHistory({
               type: EntryType.ERROR,
               value: `Invalid command: "${command}"
-              Robot must be placed on the grid before turning right.`,
+              Robot must be placed on the table before turning right.`,
             })
           );
         } else {
           dispatch(moveRobotRight());
           handleExecutedCommands(command);
+        }
+        break;
+      }
+      case CommandType.report: {
+        if (isNil(state.robot.position)) {
+          dispatch(
+            updateHistory({
+              type: EntryType.RESULT,
+              value: `Robot is not yet placed on the table`,
+            })
+          );
+        } else {
+          dispatch(
+            updateHistory({
+              type: EntryType.RESULT,
+              value: `Report Robot Position: ${state.robot.position.row}, ${state.robot.position.col}, ${state.robot.position.direction}`,
+            })
+          );
         }
         break;
       }

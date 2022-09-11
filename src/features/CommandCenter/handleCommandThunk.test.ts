@@ -3,6 +3,7 @@ import {
   moveRobotLeft,
   moveRobotRight,
   placeRobot,
+  placeRobotWithoutDirection,
 } from "features/Robot/robotSlice";
 import { RobotDirection } from "features/types";
 import { AppState } from "store";
@@ -15,7 +16,7 @@ describe("handleCommandThunk", () => {
   describe("place", () => {
     it("should dispatch placeRobot, addCommand & updateHistory", async () => {
       // Setup
-      const command = "PLACE 0,0,NORTH";
+      const command = "PLACE,0,0,NORTH";
       const parsedCommand = parsePlace(command);
       const matchingPattern = CommandType.place;
       const dispatch = jest.fn();
@@ -38,6 +39,70 @@ describe("handleCommandThunk", () => {
       expect(dispatch).toHaveBeenCalledWith(addCommand(command));
       expect(dispatch).toHaveBeenCalledWith(
         updateHistory({ type: EntryType.COMMAND, value: command })
+      );
+    });
+
+    it("should dispatch placeRobotWithoutDirection, addCommand & updateHistory when possible", async () => {
+      // Setup
+      const command = "PLACE,0,0";
+      const parsedCommand = parsePlace(command);
+      const matchingPattern = CommandType.place;
+      const dispatch = jest.fn();
+      const state: AppState = {
+        robot: {
+          position: {
+            row: 0,
+            col: 0,
+            direction: RobotDirection.NORTH,
+          },
+        },
+        commands: {
+          history: [],
+          commandList: [],
+        },
+      };
+      const thunk = handleCommand({ command, matchingPattern });
+
+      // Act
+      await thunk(dispatch, () => state, undefined);
+
+      // Assert
+      expect(dispatch).toHaveBeenCalledWith(
+        placeRobotWithoutDirection(parsedCommand)
+      );
+      expect(dispatch).toHaveBeenCalledWith(addCommand(command));
+      expect(dispatch).toHaveBeenCalledWith(
+        updateHistory({ type: EntryType.COMMAND, value: command })
+      );
+    });
+
+    it("should dispatch updateHistory with error when not initially placed with a direction", async () => {
+      // Setup
+      const command = "PLACE,0,0";
+      const matchingPattern = CommandType.place;
+      const dispatch = jest.fn();
+      const state: AppState = {
+        robot: {
+          position: undefined,
+        },
+        commands: {
+          history: [],
+          commandList: [],
+        },
+      };
+      const thunk = handleCommand({ command, matchingPattern });
+
+      // Act
+      await thunk(dispatch, () => state, undefined);
+
+      // Assert
+      expect(dispatch).toHaveBeenCalledWith(
+        updateHistory({
+          type: EntryType.ERROR,
+          value: expect.stringContaining(
+            "Robot must be placed on the board with a direction."
+          ),
+        })
       );
     });
   });
@@ -136,7 +201,7 @@ describe("handleCommandThunk", () => {
         updateHistory({
           type: EntryType.ERROR,
           value: expect.stringContaining(
-            "Robot must be placed on the grid before moving."
+            "Robot must be placed on the table before moving."
           ),
         })
       );
@@ -199,7 +264,7 @@ describe("handleCommandThunk", () => {
         updateHistory({
           type: EntryType.ERROR,
           value: expect.stringContaining(
-            "Robot must be placed on the grid before turning left."
+            "Robot must be placed on the table before turning left."
           ),
         })
       );
@@ -262,7 +327,71 @@ describe("handleCommandThunk", () => {
         updateHistory({
           type: EntryType.ERROR,
           value: expect.stringContaining(
-            "Robot must be placed on the grid before turning right."
+            "Robot must be placed on the table before turning right."
+          ),
+        })
+      );
+    });
+  });
+
+  describe("report", () => {
+    it("should dispatch updateHistory with robot position if robot is placed", async () => {
+      // Setup
+      const command = "REPORT";
+      const matchingPattern = CommandType.report;
+      const dispatch = jest.fn();
+      const state: AppState = {
+        robot: {
+          position: {
+            row: 0,
+            col: 0,
+            direction: RobotDirection.NORTH,
+          },
+        },
+        commands: {
+          history: [],
+          commandList: [],
+        },
+      };
+      const thunk = handleCommand({ command, matchingPattern });
+
+      // Act
+      await thunk(dispatch, () => state, undefined);
+
+      // Assert
+      expect(dispatch).toHaveBeenCalledWith(
+        updateHistory({
+          type: EntryType.RESULT,
+          value: expect.stringContaining(`Report Robot Position: 0, 0, NORTH`),
+        })
+      );
+    });
+
+    it("should dispatch updateHistory with error when robot not placed", async () => {
+      // Setup
+      const command = "REPORT";
+      const matchingPattern = CommandType.report;
+      const dispatch = jest.fn();
+      const state: AppState = {
+        robot: {
+          position: undefined,
+        },
+        commands: {
+          history: [],
+          commandList: [],
+        },
+      };
+      const thunk = handleCommand({ command, matchingPattern });
+
+      // Act
+      await thunk(dispatch, () => state, undefined);
+
+      // Assert
+      expect(dispatch).toHaveBeenCalledWith(
+        updateHistory({
+          type: EntryType.RESULT,
+          value: expect.stringContaining(
+            `Robot is not yet placed on the table`
           ),
         })
       );

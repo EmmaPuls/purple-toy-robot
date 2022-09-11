@@ -2,7 +2,7 @@ import { GRID_SIZE } from "config/config";
 import { findMatchingPattern, getPatternsAsRegex } from "./commands";
 
 const cardinalDirections = ["NORTH", "SOUTH", "EAST", "WEST"];
-describe("acceptableCommands", () => {
+describe("commands", () => {
   describe("getPatternsAsRegex", () => {
     describe("PLACE commands", () => {
       const regex = getPatternsAsRegex();

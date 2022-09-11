@@ -2,6 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GRID_SIZE } from "config/config";
 import { RobotDirection } from "features/types";
 
+export type RobotLocation = {
+  row: number;
+  col: number;
+};
+
 export type RobotPosition = {
   row: number;
   col: number;
@@ -22,6 +27,15 @@ export const robotSlice = createSlice({
   reducers: {
     placeRobot: (state, action: PayloadAction<RobotPosition>) => {
       state.position = action.payload;
+    },
+    placeRobotWithoutDirection: (
+      state,
+      action: PayloadAction<RobotLocation>
+    ) => {
+      if (state.position) {
+        state.position.row = action.payload.row;
+        state.position.col = action.payload.col;
+      }
     },
     clearRobot: (state) => {
       state.position = undefined;
@@ -93,6 +107,7 @@ export const robotSlice = createSlice({
 
 export const {
   placeRobot,
+  placeRobotWithoutDirection,
   moveRobotForward,
   moveRobotLeft,
   moveRobotRight,

@@ -5,6 +5,7 @@ export enum CommandType {
   move = "move",
   left = "left",
   right = "right",
+  report = "report",
 }
 
 export type CommandPatterns = {
@@ -29,20 +30,20 @@ const getPlaceRegex = (gridSize: number): RegExp =>
   new RegExp(
     `^PLACE,${gridRange(gridSize)},${gridRange(
       gridSize
-    )},(NORTH|EAST|SOUTH|WEST)$`
+    )},?(NORTH|EAST|SOUTH|WEST)?$`
   );
 
 const getMoveRegex = (): RegExp => new RegExp("^MOVE$");
-
 const getLeftRegex = (): RegExp => new RegExp("^LEFT$");
-
 const getRightRegex = (): RegExp => new RegExp("^RIGHT$");
+const getReportRegex = (): RegExp => new RegExp("^REPORT$");
 
 const commands = (gridSize: number): CommandPatterns => ({
   place: getPlaceRegex(gridSize),
   move: getMoveRegex(),
   left: getLeftRegex(),
   right: getRightRegex(),
+  report: getReportRegex(),
 });
 
 const buildPattern = (gridSize: number) => {
