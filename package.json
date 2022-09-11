@@ -32,7 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "npm test -- --coverage --watchAll"
+    "coverage": "npm test -- --coverage --watchAll",
+    "check-types": "tsc --noemit"
   },
   "eslintConfig": {
     "extends": [

@@ -18,14 +18,16 @@ const commandStyles = (theme: GlobalTheme): CommandStyles => ({
     alignContent: "left",
     minHeight: "3rem",
     flexShrink: 1,
+    maxHeight: '16em',
   },
   border: {
     flex: 1,
-    border: `1px solid ${theme.palette.primary.main}`,
+    overflow: "auto",
+    border: `1px solid ${theme.palette.primary.dark}`,
     borderRadius: theme.spacing(0.5),
   },
   label: {
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.dark,
     display: "block",
     pointerEvents: "none",
     fontSize: theme.spacing(1.5),

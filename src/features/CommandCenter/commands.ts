@@ -1,11 +1,11 @@
 import { GRID_SIZE } from "config/config";
 
-export enum Command {
+export enum CommandType {
   place = "place",
 }
 
 export type CommandPatterns = {
-  [key in Command]: RegExp;
+  [key in CommandType]: RegExp;
 };
 
 /**
@@ -30,7 +30,7 @@ const getPlaceRegex = (gridSize: number): RegExp =>
   );
 
 const commands = (gridSize: number): CommandPatterns => ({
-  "place": getPlaceRegex(gridSize),
+  place: getPlaceRegex(gridSize),
 });
 
 const buildPattern = (gridSize: number) => {
@@ -41,5 +41,12 @@ export const getPatternsAsRegex = (gridSize: number = GRID_SIZE) => {
   return buildPattern(gridSize);
 };
 
-export const findMatchingPattern = (command: string, patterns: CommandPatterns) =>
-  Object.values(patterns).find((pattern) => pattern.test(command));
+export const findMatchingPattern = (
+  command: string,
+  patterns: CommandPatterns
+) => {
+  const commandType = Object.keys(patterns).find((key) => {
+    return patterns[key as CommandType].test(command);
+  });
+  return commandType;
+};

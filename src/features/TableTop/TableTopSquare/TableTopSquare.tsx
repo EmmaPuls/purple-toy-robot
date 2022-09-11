@@ -6,15 +6,22 @@ import tableTopSquareStyles from "./TableTopSquare.style";
 import Popover from "@mui/material/Popover";
 import useDescriptionPopover from "./useDescriptionPopover";
 import { GRID_SIZE } from "config/config";
-import { Direction, TableTopSquareState } from "features/types";
+import { RobotDirection, TableTopSquareState } from "features/types";
 import Forward from "features/Robot";
 
 type TableTopSquareProps = {
   state: TableTopSquareState;
   number: number;
+  hasRobot: boolean;
+  robotDirection?: RobotDirection;
 };
 
-const TableTopSquare: FC<TableTopSquareProps> = ({ state, number }) => {
+const TableTopSquare: FC<TableTopSquareProps> = ({
+  state,
+  number,
+  hasRobot,
+  robotDirection,
+}) => {
   const theme = useTheme() as GlobalTheme;
   const squareDimension = useMemo(() => Math.floor(100 / GRID_SIZE), []);
   const styles = tableTopSquareStyles(theme, state.color, squareDimension);
@@ -24,6 +31,8 @@ const TableTopSquare: FC<TableTopSquareProps> = ({ state, number }) => {
     open,
     squareDescription,
   } = useDescriptionPopover();
+
+  const canRenderRobot = hasRobot && robotDirection;
 
   return (
     <>
@@ -35,13 +44,13 @@ const TableTopSquare: FC<TableTopSquareProps> = ({ state, number }) => {
         onMouseEnter={handleDescriptionOpen}
         onMouseLeave={handleDescriptionClose}
       >
-        <Forward direction={Direction.NORTH} />
+        {canRenderRobot && <Forward robotDirection={robotDirection} />}
       </div>
       <Popover
         id="square-description"
         open={open}
         anchorEl={squareDescription}
-        PaperProps={{className: css(styles.paper)}}
+        PaperProps={{ className: css(styles.paper) }}
         className={css(styles.description)}
         anchorOrigin={{
           vertical: "bottom",

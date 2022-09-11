@@ -10,7 +10,7 @@ export enum TableCellColor {
 };
 
 
-export enum Direction {
+export enum RobotDirection {
   NORTH,
   SOUTH,
   EAST,

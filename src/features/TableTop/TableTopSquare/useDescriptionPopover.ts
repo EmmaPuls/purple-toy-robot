@@ -7,7 +7,6 @@ const useDescriptionPopover = () => {
   const handleDescriptionOpen = (
     event: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
-    console.log("handleDescriptionOpen");
     setSquareDescription(event.currentTarget);
   };
 

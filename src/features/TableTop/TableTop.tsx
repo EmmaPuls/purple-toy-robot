@@ -9,7 +9,7 @@ import useTableTop from "./useTableTop";
 const TableTop: FC = () => {
   const theme = useTheme() as GlobalTheme;
   const styles = tableTopStyles(theme);
-  const { tableTopSquares } = useTableTop();
+  const { tableTopSquares, robotPosition } = useTableTop();
 
   return (
     <div className={css(styles.tableTop)} data-testid={"TableTop"}>
@@ -19,6 +19,8 @@ const TableTop: FC = () => {
             state={tableTopSquare}
             key={`Square-${index}`}
             number={index}
+            hasRobot={robotPosition?.row === tableTopSquare.row && robotPosition?.col === tableTopSquare.column}
+            robotDirection={robotPosition?.direction}
           />
         );
       })}

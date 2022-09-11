@@ -1,21 +1,19 @@
 import ForwardIcon from "@mui/icons-material/Forward";
-import { Direction } from "features/types";
+import { RobotDirection } from "features/types";
 import { FC } from "react";
+import { useRobot } from "./useRobot";
 
-const directionMap: Record<Direction, string> = {
-  [Direction.NORTH]: "rotate(270deg)",
-  [Direction.SOUTH]: "rotate(90deg)",
-  [Direction.EAST]: "rotate(0deg)",
-  [Direction.WEST]: "rotate(180deg)",
-};
+const Forward: FC<{ robotDirection: RobotDirection }> = ({
+  robotDirection,
+}) => {
+  const { transformRobot } = useRobot(robotDirection);
 
-const Forward: FC<{ direction: Direction }> = ({ direction }) => {
   return (
     <ForwardIcon
       sx={{
         width: "inherit",
         height: "inherit",
-        transform: directionMap[direction],
+        transform: transformRobot,
       }}
     />
   );
