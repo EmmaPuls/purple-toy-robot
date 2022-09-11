@@ -2,9 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
 import { injectGlobal } from "@emotion/css";
+import { Provider as ReduxProvider } from "react-redux";
 import myTheme from "theme";
 import App from "App";
-import RootErrorBoundary from "features/ErrorBoundaries/RootErrorBoundary";
+import AppErrorBoundary from "features/ErrorBoundaries/RootErrorBoundary";
+import { store } from "store";
 
 injectGlobal`
 body {
@@ -25,14 +27,17 @@ code {
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <RootErrorBoundary>
+    <AppErrorBoundary>
       <ThemeProvider theme={myTheme}>
-        <RootErrorBoundary themeLoaded>
-          <App />
-        </RootErrorBoundary>
+        <ReduxProvider store={store}>
+          <AppErrorBoundary themeLoaded>
+            <App />
+          </AppErrorBoundary>
+        </ReduxProvider>
       </ThemeProvider>
-    </RootErrorBoundary>
+    </AppErrorBoundary>
   </React.StrictMode>
 );

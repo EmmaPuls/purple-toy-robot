@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { findMatchingPattern, getPatternsAsRegex } from "../commands";
+import { addCommand } from "../commandSlice";
 
 const useCommandInput = () => {
+  const dispatch = useDispatch();
   const patterns = getPatternsAsRegex();
   const [error, setError] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
@@ -11,6 +14,9 @@ const useCommandInput = () => {
       const command = value.toUpperCase();
       const matchingPattern = findMatchingPattern(command, patterns);
       const isValid = Boolean(matchingPattern);
+      if(isValid) {
+        dispatch(addCommand(command));
+      }
       setError(!isValid);
       setValue("");
     }
