@@ -48,7 +48,6 @@ export const handleCommand = createAsyncThunk<
       dispatch(updateHistory({ type: EntryType.COMMAND, value: command }));
     };
 
-    console.log("Can log out in thunks");
     switch (matchingPattern as CommandType) {
       case CommandType.place: {
         const parsedCommand = parsePlace(command);
@@ -57,7 +56,6 @@ export const handleCommand = createAsyncThunk<
         break;
       }
       case CommandType.move: {
-        console.log("move");
         if (isNil(state.robot.position)) {
           dispatch(
             updateHistory({

@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "store";
-import {
-  findMatchingPattern,
-  getPatternsAsRegex,
-} from "../commands";
+import { findMatchingPattern, getPatternsAsRegex } from "../commands";
 import { EntryType, updateHistory } from "../commandSlice";
 import { handleCommand } from "../handleCommandThunk";
 
@@ -18,7 +15,6 @@ const useCommandInput = () => {
     if (key === "Enter") {
       const command = value.toUpperCase();
       const matchingPattern = findMatchingPattern(command, patterns);
-      console.log("matchingPattern", matchingPattern);
       const isValid = Boolean(matchingPattern);
       if (isValid && matchingPattern) {
         dispatch(handleCommand({ command, matchingPattern }));
