@@ -3,6 +3,7 @@ import { GRID_SIZE } from "config/config";
 import {
   moveRobotForward,
   moveRobotLeft,
+  moveRobotRight,
   placeRobot,
   RobotPosition,
 } from "features/Robot/robotSlice";
@@ -92,6 +93,22 @@ export const handleCommand = createAsyncThunk<
           dispatch(moveRobotLeft());
           handleExecutedCommands(command);
         }
+        break;
+      }
+      case CommandType.right: {
+        if (isNil(state.robot.position)) {
+          dispatch(
+            updateHistory({
+              type: EntryType.ERROR,
+              value: `Invalid command: "${command}"
+              Robot must be placed on the grid before turning right.`,
+            })
+          );
+        } else {
+          dispatch(moveRobotRight());
+          handleExecutedCommands(command);
+        }
+        break;
       }
     }
   }

@@ -1,6 +1,7 @@
 import {
   moveRobotForward,
   moveRobotLeft,
+  moveRobotRight,
   placeRobot,
 } from "features/Robot/robotSlice";
 import { RobotDirection } from "features/types";
@@ -199,6 +200,69 @@ describe("handleCommandThunk", () => {
           type: EntryType.ERROR,
           value: expect.stringContaining(
             "Robot must be placed on the grid before turning left."
+          ),
+        })
+      );
+    });
+  });
+
+  describe("move right", () => {
+    it("should dispatch moveRobotRight, addCommand & updateHistory if robot is placed", async () => {
+      // Setup
+      const command = "RIGHT";
+      const matchingPattern = CommandType.right;
+      const dispatch = jest.fn();
+      const state: AppState = {
+        robot: {
+          position: {
+            row: 0,
+            col: 0,
+            direction: RobotDirection.NORTH,
+          },
+        },
+        commands: {
+          history: [],
+          commandList: [],
+        },
+      };
+      const thunk = handleCommand({ command, matchingPattern });
+
+      // Act
+      await thunk(dispatch, () => state, undefined);
+
+      // Assert
+      expect(dispatch).toHaveBeenCalledWith(moveRobotRight());
+      expect(dispatch).toHaveBeenCalledWith(addCommand(command));
+      expect(dispatch).toHaveBeenCalledWith(
+        updateHistory({ type: EntryType.COMMAND, value: command })
+      );
+    });
+
+    it("should dispatch updateHistory with error when robot not placed", async () => {
+      // Setup
+      const command = "RIGHT";
+      const matchingPattern = CommandType.right;
+      const dispatch = jest.fn();
+      const state: AppState = {
+        robot: {
+          position: undefined,
+        },
+        commands: {
+          history: [],
+          commandList: [],
+        },
+      };
+      const thunk = handleCommand({ command, matchingPattern });
+
+      // Act
+      await thunk(dispatch, () => state, undefined);
+
+      // Assert
+      expect(dispatch).toHaveBeenCalledWith(
+        updateHistory({
+          type: EntryType.ERROR,
+          value: expect.stringContaining(
+            "Robot must be placed on the grid before turning right."
           ),
         })
       );
