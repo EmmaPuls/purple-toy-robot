@@ -4,6 +4,7 @@ import { GlobalTheme } from "theme";
 
 type TableTopSquareStyle = {
   square: CSSObject;
+  paper: CSSObject;
   description: CSSObject;
   robot: CSSObject;
 };
@@ -23,9 +24,14 @@ const tableTopSquareStyles = (
       minHeight: `${squareDimension}%`,
       minWidth: `${squareDimension}%`,
     },
+    paper: {
+      padding: "0.3em",
+      borderStyle: "solid",
+      borderWidth: "0.3em",
+      borderColor: theme.palette.primary.main,
+    },
     description: {
-      fontSize: "1.5em",
-      lineHeight: "2em",
+      fontSize: "1.2em",
       fontWeight: "bold",
       overflow: "visible",
       pointerEvents: "none",

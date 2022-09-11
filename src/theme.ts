@@ -1,49 +1,43 @@
 import { createTheme, Theme } from "@mui/material";
-import { merge } from "lodash";
 
 const defaultTheme = createTheme();
 
-export type GlobalTheme = {
+export type GlobalTheme = Theme & MyTheme;
+
+export interface MyTheme {
   colors: {
     boardDark: string;
     boardLight: string;
     playArea: string;
-    interaction: string;
     background: string;
     text: string;
     invertedText: string;
     error: string;
   };
-  spacing: (multiplier: number) => string;
-};
+}
 
-const myTheme: GlobalTheme = {
+const globalTheme: GlobalTheme  = {
   colors: {
     boardDark: "#B2f2EF",
     boardLight: "#EDFDFB",
     background: "#EFF7F6",
     playArea: "#F2B5D4",
-    interaction: "#e91e63",
     text: "#282c34",
     invertedText: "#EFF7F6",
     error: "#9B1D20",
   },
-  spacing: (multiplier: number) => `${multiplier * 8}px`,
-};
-
-const theme: Theme = {
   ...defaultTheme,
   palette: {
     ...defaultTheme.palette,
     primary: {
       main: "#00bcd4",
-      contrastText: myTheme.colors.text,
+      contrastText: "#282c34",
       dark: "#008394",
       light: "#33c9dc",
     },
     background: {
       ...defaultTheme.palette.background,
-      paper: myTheme.colors.background,
+      paper: "#EFF7F6",
     },
   },
   zIndex: {
@@ -51,7 +45,5 @@ const theme: Theme = {
     modal: 1000,
   },
 };
-
-const globalTheme = merge(theme, myTheme);
 
 export default globalTheme;

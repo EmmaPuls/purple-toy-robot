@@ -34,7 +34,7 @@ const readOnlyTextAreaStyle = (theme: GlobalTheme): ReadOnlyTextAreaStyles => ({
     padding: theme.spacing(2),
     borderRadius: theme.spacing(1),
     border: "none",
-    outlineColor: theme.colors.interaction,
+    outlineColor: theme.palette.primary.main,
     flexGrow: 1,
     cursor: "pointer",
   },

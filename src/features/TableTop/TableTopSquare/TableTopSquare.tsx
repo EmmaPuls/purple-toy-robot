@@ -41,6 +41,7 @@ const TableTopSquare: FC<TableTopSquareProps> = ({ state, number }) => {
         id="square-description"
         open={open}
         anchorEl={squareDescription}
+        PaperProps={{className: css(styles.paper)}}
         className={css(styles.description)}
         anchorOrigin={{
           vertical: "bottom",
