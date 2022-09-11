@@ -11,6 +11,7 @@
 - TypeScript
 - Reduxjs/toolkit for state management and thunks
 - Emotion for styling
+  \
   Originally I was using my own emotion theme, but after integrating MaterialUI I now have a hybrid theme. It was simple to move a few styles over, but focussed on features instead.
 - Jest for testing
 - React Testing Library for testing
@@ -45,6 +46,7 @@ Once the build folder is ready to be deployed.
 You may serve it with a static server:
 
 `pnpm install -g serve`
+
 `serve -s build`
 
 ## Learn More
