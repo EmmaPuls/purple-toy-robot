@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { GRID_SIZE } from "config/config";
 import {
   moveRobotForward,
+  moveRobotLeft,
   placeRobot,
   RobotPosition,
 } from "features/Robot/robotSlice";
@@ -77,6 +78,20 @@ export const handleCommand = createAsyncThunk<
           );
         }
         break;
+      }
+      case CommandType.left: {
+        if (isNil(state.robot.position)) {
+          dispatch(
+            updateHistory({
+              type: EntryType.ERROR,
+              value: `Invalid command: "${command}"
+              Robot must be placed on the grid before turning left.`,
+            })
+          );
+        } else {
+          dispatch(moveRobotLeft());
+          handleExecutedCommands(command);
+        }
       }
     }
   }

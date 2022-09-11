@@ -1,4 +1,8 @@
-import { moveRobotForward, placeRobot } from "features/Robot/robotSlice";
+import {
+  moveRobotForward,
+  moveRobotLeft,
+  placeRobot,
+} from "features/Robot/robotSlice";
 import { RobotDirection } from "features/types";
 import { AppState } from "store";
 import { CommandType } from "./commands";
@@ -37,7 +41,7 @@ describe("handleCommandThunk", () => {
     });
   });
 
-  describe("move", () => {
+  describe("move forward", () => {
     afterEach(() => {
       jest.clearAllMocks();
     });
@@ -132,6 +136,69 @@ describe("handleCommandThunk", () => {
           type: EntryType.ERROR,
           value: expect.stringContaining(
             "Robot must be placed on the grid before moving."
+          ),
+        })
+      );
+    });
+  });
+
+  describe("move left", () => {
+    it("should dispatch moveRobotLeft, addCommand & updateHistory if robot is placed", async () => {
+      // Setup
+      const command = "LEFT";
+      const matchingPattern = CommandType.left;
+      const dispatch = jest.fn();
+      const state: AppState = {
+        robot: {
+          position: {
+            row: 0,
+            col: 0,
+            direction: RobotDirection.NORTH,
+          },
+        },
+        commands: {
+          history: [],
+          commandList: [],
+        },
+      };
+      const thunk = handleCommand({ command, matchingPattern });
+
+      // Act
+      await thunk(dispatch, () => state, undefined);
+
+      // Assert
+      expect(dispatch).toHaveBeenCalledWith(moveRobotLeft());
+      expect(dispatch).toHaveBeenCalledWith(addCommand(command));
+      expect(dispatch).toHaveBeenCalledWith(
+        updateHistory({ type: EntryType.COMMAND, value: command })
+      );
+    });
+
+    it("should dispatch updateHistory with error when robot not placed", async () => {
+      // Setup
+      const command = "LEFT";
+      const matchingPattern = CommandType.left;
+      const dispatch = jest.fn();
+      const state: AppState = {
+        robot: {
+          position: undefined,
+        },
+        commands: {
+          history: [],
+          commandList: [],
+        },
+      };
+      const thunk = handleCommand({ command, matchingPattern });
+
+      // Act
+      await thunk(dispatch, () => state, undefined);
+
+      // Assert
+      expect(dispatch).toHaveBeenCalledWith(
+        updateHistory({
+          type: EntryType.ERROR,
+          value: expect.stringContaining(
+            "Robot must be placed on the grid before turning left."
           ),
         })
       );

@@ -3,6 +3,7 @@ import { GRID_SIZE } from "config/config";
 export enum CommandType {
   place = "place",
   move = "move",
+  left = "left",
 }
 
 export type CommandPatterns = {
@@ -32,9 +33,12 @@ const getPlaceRegex = (gridSize: number): RegExp =>
 
 const getMoveRegex = (): RegExp => new RegExp("^MOVE$");
 
+const getLeftRegex = (): RegExp => new RegExp("^LEFT$");
+
 const commands = (gridSize: number): CommandPatterns => ({
   place: getPlaceRegex(gridSize),
   move: getMoveRegex(),
+  left: getLeftRegex(),
 });
 
 const buildPattern = (gridSize: number) => {
