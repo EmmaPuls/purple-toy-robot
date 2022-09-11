@@ -11,8 +11,6 @@ export interface MyTheme {
     playArea: string;
     background: string;
     text: string;
-    invertedText: string;
-    error: string;
   };
 }
 
@@ -23,8 +21,6 @@ const globalTheme: GlobalTheme  = {
     background: "#EFF7F6",
     playArea: "#F2B5D4",
     text: "#282c34",
-    invertedText: "#EFF7F6",
-    error: "#9B1D20",
   },
   ...defaultTheme,
   palette: {
@@ -34,6 +30,12 @@ const globalTheme: GlobalTheme  = {
       contrastText: "#282c34",
       dark: "#008394",
       light: "#33c9dc",
+    },
+    error: {
+      main: "#9B1D20",
+      contrastText: "#EFF7F6",
+      dark: "#6A0003",
+      light: "#D32F2F",
     },
     background: {
       ...defaultTheme.palette.background,

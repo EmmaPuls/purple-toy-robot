@@ -18,8 +18,8 @@ export const errorPageStyles = (theme: GlobalTheme): ErrorPageStyles => ({
     height: "60vmin",
     padding: theme.spacing(2.5),
     borderRadius: theme.spacing(1.25),
-    backgroundColor: theme.colors.error,
-    color: theme.colors.invertedText,
+    backgroundColor: theme.palette.error.main,
+    color: theme.palette.error.contrastText,
     textAlign: "center",
   },
   page: {

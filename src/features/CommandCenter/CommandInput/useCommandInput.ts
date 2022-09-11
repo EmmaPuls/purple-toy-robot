@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { findMatchingPattern, getPatternsAsRegex } from "../commands";
-import { addCommand } from "../commandSlice";
+import { addCommand, EntryType, updateHistory } from "../commandSlice";
 
 const useCommandInput = () => {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const useCommandInput = () => {
       const isValid = Boolean(matchingPattern);
       if(isValid) {
         dispatch(addCommand(command));
+        dispatch(updateHistory({ type: EntryType.COMMAND, value: command }));
       }
       setError(!isValid);
       setValue("");
