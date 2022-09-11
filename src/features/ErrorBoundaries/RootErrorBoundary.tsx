@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
-import { defaultTo } from "lodash";
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import defaultTo from "lodash/defaultTo";
+import { Component, ErrorInfo, ReactNode } from "react";
 import ErrorPage from "./ErrorPage";
 
 interface Props {

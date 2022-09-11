@@ -24,7 +24,6 @@ const CommandOutput: FC = () => {
       <div
         id="output-box"
         className={css(styles.border)}
-        aria-labelledby="output-label"
       >
         {history.map((entry, index) => (
           <HistoryEntry entry={entry} key={`history-entry-${index}`} />

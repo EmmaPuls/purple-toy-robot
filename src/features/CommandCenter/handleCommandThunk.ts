@@ -9,7 +9,7 @@ import {
   RobotPosition,
 } from "features/Robot/robotSlice";
 import { RobotDirection } from "features/types";
-import { isNil } from "lodash";
+import isNil from "lodash/isNil";
 import { AppDispatch, AppState } from "store";
 import { CommandType } from "./commands";
 import { addCommand, EntryType, updateHistory } from "./commandSlice";

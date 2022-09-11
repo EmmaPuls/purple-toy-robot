@@ -1,11 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@emotion/react";
 import { injectGlobal } from "@emotion/css";
-import { Provider as ReduxProvider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux/";
 import myTheme from "theme";
 import App from "App";
-import AppErrorBoundary from "features/ErrorBoundaries/RootErrorBoundary";
+import ErrorBoundary from "features/ErrorBoundaries/RootErrorBoundary";
 import { store } from "store";
 
 injectGlobal`
@@ -24,20 +24,20 @@ code {
 }
 `;
 
-const root = ReactDOM.createRoot(
+const root = createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
   <React.StrictMode>
-    <AppErrorBoundary>
+    <ErrorBoundary>
       <ThemeProvider theme={myTheme}>
         <ReduxProvider store={store}>
-          <AppErrorBoundary themeLoaded>
+          <ErrorBoundary themeLoaded>
             <App />
-          </AppErrorBoundary>
+          </ErrorBoundary>
         </ReduxProvider>
       </ThemeProvider>
-    </AppErrorBoundary>
+    </ErrorBoundary>
   </React.StrictMode>
 );

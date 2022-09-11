@@ -14,7 +14,7 @@ export interface MyTheme {
   };
 }
 
-const globalTheme: GlobalTheme  = {
+const globalTheme: GlobalTheme = {
   colors: {
     boardDark: "#B2f2EF",
     boardLight: "#EDFDFB",
@@ -26,10 +26,10 @@ const globalTheme: GlobalTheme  = {
   palette: {
     ...defaultTheme.palette,
     primary: {
-      main: "#00bcd4",
+      main: "#4e4187",
       contrastText: "#282c34",
-      dark: "#008394",
-      light: "#33c9dc",
+      dark: "#302853",
+      light: "#6150A5",
     },
     error: {
       main: "#9B1D20",

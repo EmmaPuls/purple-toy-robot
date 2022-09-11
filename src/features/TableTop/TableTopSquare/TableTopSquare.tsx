@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { useTheme } from "@emotion/react";
-import React, { FC, useMemo } from "react";
+import { FC, useMemo } from "react";
 import { GlobalTheme } from "theme";
 import tableTopSquareStyles from "./TableTopSquare.style";
 import Popover from "@mui/material/Popover";

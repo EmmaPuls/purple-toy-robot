@@ -1,6 +1,6 @@
 import { Theme, ThemeProvider } from "@emotion/react";
-import { defaultTo } from "lodash";
-import React, { FC } from "react";
+import defaultTo from "lodash/defaultTo";
+import { FC } from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "store";
 import myTheme from "../theme";
