@@ -25,9 +25,18 @@ const CommandInput: FC = () => {
           style: {
             textTransform: "uppercase",
             fontFamily: "monospace",
+            fontSize: "1.5rem",
           },
           "data-testid": "command-input",
-          // type: "text",
+        }}
+        InputLabelProps={{
+          style: {
+            fontSize: "1.5rem",
+            backgroundColor: theme.palette.background.paper,
+            paddingInline: "0.5rem",
+            paddingLeft: "0.3rem",
+            lineHeight: "1.5rem",
+          },
         }}
       />
     </div>

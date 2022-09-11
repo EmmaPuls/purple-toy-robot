@@ -18,7 +18,7 @@ const historyEntryStyles = (theme: GlobalTheme): HistoryEntryStyles => ({
   entry: {
     fontFamily: 'monospace',
     paddingInline: theme.spacing(1),
-    fontSize: '1em',
+    fontSize: '1.5em',
     lineHeight: '1.5em',
     textAlign: 'left',
     textWrap: 'normal',
