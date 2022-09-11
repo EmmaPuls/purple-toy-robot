@@ -11,8 +11,8 @@ export enum TableCellColor {
 
 
 export enum RobotDirection {
-  NORTH,
-  SOUTH,
-  EAST,
-  WEST,
+  NORTH = "NORTH",
+  SOUTH = "SOUTH",
+  EAST = "EAST",
+  WEST = "WEST",
 }
